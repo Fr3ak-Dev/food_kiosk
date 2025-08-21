@@ -15,7 +15,9 @@ export default function OrderSummary() {
 
     const handleCreateOrder = async (formData: FormData) => {
         const data = {
-            name: formData.get('name')
+            name: formData.get('name'),
+            total,
+            order
         }
         const result = OrderSchema.safeParse(data)
         if (!result.success) {
@@ -26,10 +28,10 @@ export default function OrderSummary() {
         }
         const response = await createOrder(data)
         if (response?.errors) {
-            response.errors.forEach((issue)=> {
+            response.errors.forEach((issue) => {
                 toast.error(issue.message)
             })
-            
+
         }
     }
 
