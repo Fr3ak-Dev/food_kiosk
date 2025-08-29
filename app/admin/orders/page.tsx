@@ -14,6 +14,7 @@ export default function OrdersPage() {
         revalidateOnFocus: false
     })
 
+    if (isLoading) return <p>Cargando...</p>
     if (data) return (
         <>
             <Heading>Administrar Ordenes</Heading>
